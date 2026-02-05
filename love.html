@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <style>
+        button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            font-size: 15px;
+            padding: 15px;
+            border: 60;
+            border-radius: 15px;
+            transition: padding 0.3s ease;
+        }
+        button.expand {
+            padding: 20px 40px;
+        }
+    </style>
+
+    <body>
+
+        <center>
+
+        <img src="valintine.jpg" width="500" length="600" alt="girl">
+        <h1>Will you be my valintine?</h1>
+
+        <button class="button"id="Yes">Yes!!!!</button> 
+        <button class = "button" id="No">No :(</button>
+
+        </center>
+    </body>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () =>{
+        const button_no = document.getElementById("No");
+        const button_Yes = document.getElementById("Yes")
+        const yay = new Audio("Yayyy! Sound Effect.mp3");
+
+        let vpadding = 15;
+        let hpadding = 30;
+
+        button_no.addEventListener("click", () =>{
+            vpadding += 5;
+            hpadding +=10
+
+            button_Yes.style.padding = `${vpadding}px ${hpadding}px`;
+
+        });
+
+        button_Yes.addEventListener("click", () =>{
+            yay.currentTime = 0;
+            yay.play();
+            alert("Yay! I knew you would say yes! <3");
+            console.log("clicked")
+        });
+        
+    });
+    </script>
+</html>
