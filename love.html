@@ -1,5 +1,16 @@
 <!DOCTYPE html>
+<!-- Shoutout to the GOAT Jason and his imaginary pookie! -->
+<!-- In fact, shoutout to all the imaginary pookies! -->
 <html>
+
+	<title>The Million Dollar Question</title>
+
+	<audio id="HardTimeAudio" loop>
+		<source src="audio/BGhard.ogg" type="audio/ogg">
+	</audio>
+	<audio id="DeluxeModeAudio" loop>
+		<source src="audio/BGdeluxe.ogg" type="audio/ogg">
+	</audio>
 
     <style>
         button {
@@ -14,43 +25,194 @@
         button.expand {
             padding: 20px 40px;
         }
+		#NittyGritty {
+			display: flex;
+			justify-items: center;
+			text-align: center;
+			justify-content: center;
+		}
     </style>
 
     <body>
-
-        <center>
-
-        <img src="valintine.jpg" width="500" length="600" alt="girl">
-        <h1>Will you be my valintine?</h1>
-
-        <button class="button"id="Yes">Yes!!!!</button> 
-        <button class = "button" id="No">No :(</button>
-
-        </center>
+        <div id="NittyGritty">
+		<div>
+			<img id="PookieImgFrame" src="images/valintine.jpg" width="500" length="600" alt="girl">
+			<h1 id="MillionDollarQuestion">Will you be my valintine?</h1>
+		
+			<input type="checkbox" id="HardModeState" name="HardModeState" title="Makes you really work for that rejection. Perhaps maybe you'll reconsider?">
+			<label for="HardModeState"> Hard Mode</label>
+			<br>
+			<input type="checkbox" id="DeluxModeState" name="DeluxModeState" title="Makes a Valentines Day site fit for a queen... or king. Whatever floats your boat.">
+			<label for="HardModeState"> Deluxe Mode</label>
+			<br>
+		
+			<button class="button"id="Yes">Yes!!!!</button> 
+			<button class = "button" id="No">No :(</button>
+		</div>
+        </div>
     </body>
 
-    <script>
-    document.addEventListener("DOMContentLoaded", () =>{
-        const button_no = document.getElementById("No");
-        const button_Yes = document.getElementById("Yes")
-        const yay = new Audio("Yayyy! Sound Effect.mp3");
+	<noscript>Turn on JavaScript, blockhead! The site's busted, otherwise</noscript>
 
+    <script>
+	document.disabled
+	document.addEventListener("DOMContentLoaded", () =>{
+		const Pookies = [
+		'images/RomCom1.webp',
+		'images/RomCom2.webp',
+		'images/RomCom3.webp',
+		'images/RomCom4.webp',
+		'images/RomCom5.webp',
+		'images/RomCom67.webp'
+		]
+		const Question = document.getElementById("MillionDollarQuestion");
+		const ImgFrame = document.getElementById("PookieImgFrame");
+		const button_no = document.getElementById("No");
+        const button_Yes = document.getElementById("Yes");
+        const yay = new Audio("audio/Yayyy! Sound Effect.mp3");
+		
+		const HardButton = document.getElementById("HardModeState");
+		const HardAudio = document.getElementById("HardTimeAudio");
+		const DeluxeButton = document.getElementById("DeluxModeState");
+		const DeluxeAudio = document.getElementById("DeluxeModeAudio");
+		
+		const GoodResult = document.getElementById("GoodEnding");
+		const BadResult = document.getElementById("BadEnding");
+		
+		
+		let regexp = /android|iphone|kindle|ipad/i;
+		let MobileCheck = regexp.test(navigator.userAgent);
+		console.log(MobileCheck);
+		
+		let HardTimer;
+		let HardModeState = false;
+		let DeluxModeState = false;
+		
+		let PookiePicker = Math.floor(Math.random() * 5);
         let vpadding = 15;
         let hpadding = 30;
+		
+		
+		if (confirm("Please take a moment to the read the Terms & Conditions.")) {
+			window.open('tos.html');
+		}
+		
+		ImgFrame.src = Pookies[PookiePicker];
+		console.log(PookiePicker);
+		HardButton.checked = false;
+		DeluxeButton.checked = false;
 
+        DeluxeButton.addEventListener("click", () =>{
+            DeluxModeState = !DeluxModeState;
+			ImgFrame.src = Pookies[5];
+			button_Yes.style.backgroundColor = "mistyrose";
+			button_no.style.backgroundColor = "mistyrose";
+			Question.style.fontFamily = "Lucida Handwriting";
+			Question.style.color = "red";
+			Question.innerHTML = "Will you be my Valentine?";
+			document.body.style.backgroundColor = "pink";
+			if (HardModeState == false) {
+				DeluxeAudio.play();
+			}
+			if (DeluxModeState == false) {
+				ImgFrame.src = Pookies[PookiePicker];
+				document.body.style.backgroundColor = "white";
+				button_no.style.backgroundColor = "white";
+				button_Yes.style.backgroundColor = "white";
+				Question.style.fontFamily = "Times New Roman";
+				Question.style.color = "black";
+				Question.innerHTML = "Will you be my valintine?";
+				DeluxeAudio.pause();
+			}
+        });
+        HardButton.addEventListener("click", () =>{
+            HardModeState = !HardModeState;
+			HardAudio.play();
+			DeluxeAudio.pause();
+			if (MobileCheck == true) {
+				HardTimer=setInterval(HardTime, 1000);
+			}
+			if (HardModeState == false) {
+				button_no.style.translate = "0px 0px";
+				HardAudio.pause();
+				clearInterval(HardTimer);
+				if (DeluxModeState == true) {
+					DeluxeAudio.play();
+				}
+			}
+        });
+		button_no.addEventListener("mouseover", () =>{
+			if (HardModeState == true) {
+				HardTime();
+			}
+        });
+		function HardTime() {
+			let HardSizeX = Math.floor(Math.random() * screen.width);
+			let HardSizeY = Math.floor(Math.random() * screen.height);
+			let HardDimension = HardSizeX.toString() + "px " + HardSizeY.toString() + "px";
+			console.log(HardDimension);
+			button_no.style.translate = HardDimension;
+		}
+		
+		function Ending(verdict) {
+			if (verdict == "good") {
+				yay.currentTime = 0;
+				yay.play();
+				alert("Yay! I knew you would say yes! <3");
+				console.log("clicked")
+			} else if (verdict == "reallygood") {
+				// Here's a digital Valentines Day card with cojenes!
+				yay.play(); // Original yay sound actually goes hard w/ the video
+				document.open();
+				document.write('<title>The Good Ending</title>');
+				document.write('<body style="background-color: black;">');
+				document.write('<div style="text-align: center;"><video autoplay><source src="video/GoodEnding.mp4" type="video/mp4"></video></div>');
+				document.write('</body>');
+				document.close();
+			}
+			if (verdict == "bad") {
+				vpadding += 5;
+				hpadding +=10
+				button_Yes.style.padding = `${vpadding}px ${hpadding}px`;
+			} else if (verdict == "reallybad") {
+				document.open();
+				document.write('<title>The Not-so Good Ending</title>');
+				document.write('<body style="background-color: black;">');
+				document.write('<div style="text-align: center;"><video autoplay><source src="video/BadEnding.mp4" type="video/mp4"></video></div>');
+				document.write('</body>');
+				document.close();
+			} else if (verdict == "reallyreallybad") {
+				// Video kinda makes no sense if it's being sent to a Valentine, but Whatever
+				document.open();
+				document.write('<title>The REALLY Not-so Good Ending</title>');
+				document.write('<body style="background-color: black;">');
+				document.write('<div style="text-align: center;"><video autoplay><source src="video/ReallyBadEnding.mp4" type="video/mp4"></video></div>');
+				document.write('</body>');
+				document.close();
+			}
+		}
+		
         button_no.addEventListener("click", () =>{
-            vpadding += 5;
-            hpadding +=10
-
-            button_Yes.style.padding = `${vpadding}px ${hpadding}px`;
-
+			if (HardModeState == true) {
+				if (DeluxModeState == true) {
+					Ending("reallyreallybad");
+				}
+				else {
+					Ending("reallybad");
+				}
+			}
+			else {
+				Ending("bad");
+			}
         });
 
         button_Yes.addEventListener("click", () =>{
-            yay.currentTime = 0;
-            yay.play();
-            alert("Yay! I knew you would say yes! <3");
-            console.log("clicked")
+			if (DeluxModeState == false) {
+				Ending("good");
+			}
+			else {
+				Ending("reallygood");
+			}
         });
         
     });

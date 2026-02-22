@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- Happy belated Valentines Day to all the lonely schmoes gawking at this code! -->
+<html>
+
+	<audio id="SecretSFX">
+		<source src="audio/SFXunlock.ogg" type="audio/ogg">
+	</audio>
+	<audio id="LockedSFX">
+		<source src="audio/SFXlocked.ogg" type="audio/ogg">
+	</audio>
+
+	<head>
+		<title>Terms & Conditions</title>
+	</head>
+	
+	<header>
+		<h1>Terms & Conditions of Site Use</h1>
+		<p>Published: Jun. 6, 2007 <br> Last edited: Feb. 15, 2026 06:07.41 PM</p>
+	</header>
+	
+	<body style="margin: auto;">
+	
+		<p>
+			Upon entry to the site and accepting cookies, you hereby waive personal privacy of any kind. Your public IP address, home address, and even the addresses of your immediate family (both alive and deceased), friends, and pets are 
+			shared to the site administrator. Furthermore, the aformentioned info will be complimented with biological evidence, including but not limited to a hair sample, blood sample (>10 pints), urine sample (>10 pints), saliva sample (>30 pints), 
+			and skin sample (16 oz). These samples must be mailed to the offices of Palantir (1200 17th Street, Floor 15, Denver, Colorado, United States) within the first week of accessing the site. Failure to do so will result in detainment by ICE agents 
+			and subsequent torture. Upon agreeing to site terms, you also waive the right to contest the sale of your personal informaion to all corners of the Earth and beyond. If the highest bidder of your personal information happens to be located in a 
+			region beyond your municipality, you are required to relocate to said buyer's location indefinetly, unless your information is bought out by another party. Alongside these terms, you also agree to forfeit the informaion of any human being 
+			you've ineracted with over the last 15 years. Bear in mind that even if you didn't explicity agree to the site's terms, merely accessing the TOS is also considered accepting, the buttons are just for decoration.
+		</p>
+	<div id="SupposedChoice">
+		<button onclick="window.close()">Accept Terms</button>
+		<button disabled>Reject Terms</button>
+	</div>	
+	</body>
+	
+	<footer>
+		<a href="https://www.palantir.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Palantir_Technologies_logo.svg/640px-Palantir_Technologies_logo.svg.png" style="width:224px;height:56px;"></a>
+		<a href="https://www.blackrock.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/BlackRock_wordmark.svg/250px-BlackRock_wordmark.svg.png" style="width:224px;height:32px;"></a>
+		<a href="https://www.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Facebook_Logo_%282015%29_light.svg/640px-Facebook_Logo_%282015%29_light.svg.png" style="width:224px;height:42px;"></a>
+		<a href="https://www.dhs.gov/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Logo_of_the_United_States_Immigration_and_Customs_Enforcement_Agency.svg/500px-Logo_of_the_United_States_Immigration_and_Customs_Enforcement_Agency.svg.png" style="width:164px;height:48px;"></a>
+		<a href="https://www.cia.gov/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seal_of_the_Central_Intelligence_Agency_with_wordmark.svg/960px-Seal_of_the_Central_Intelligence_Agency_with_wordmark.svg.png" style="width:156px;height:48px;"></a>
+		<a href="https://www.idf.il/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Badge_of_the_Israeli_Defense_Forces_2022_version.svg/960px-Badge_of_the_Israeli_Defense_Forces_2022_version.svg.png" style="width:64px;height:64px;"></a>
+		<!-- <a href="https://www.mossad.gov.il/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Mossad_seal.svg/960px-Mossad_seal.svg.png?20180601181034" style="width:64px;height:64px;"></a> -->
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Mossad_seal.svg/960px-Mossad_seal.svg.png?20180601181034" style="width:64px;height:64px;" onclick='SecretOpener()'>
+		<br>
+		<div style="padding-top: 10px; margin: 10px;">
+			<button class="FooterLinks" id="Bar1">Credits</button>
+			<button class="FooterLinks" id="Bar2">About</button>
+			<button class="FooterLinks" id="Bar3">Copyright 2005-2026</button>
+		<div>
+	</footer>
+
+	<script>
+		const SecretChime = document.getElementById("SecretSFX");
+		const LockBark = document.getElementById("LockedSFX");
+		const Button1 = document.getElementById("Bar1");
+		const Button2 = document.getElementById("Bar2");
+		const Button3 = document.getElementById("Bar3");
+		
+		let SecretState = false;
+		let ComboCounter = 0;
+		let CorrectCounter = 0;
+		
+		function ComboCheck() {
+			console.log(ComboCounter, CorrectCounter);
+			if (ComboCounter == 3) {
+				if (CorrectCounter == 3) {
+					document.open();
+					document.write('<title>Secret Ending</title>')
+					document.write('<audio autoplay loop><source src="audio/BGsecret.ogg" type="audio/ogg"></audio>')
+					document.write('<body style="text-align: center; background-color: black;"><img src="images/ComRom1.png" width="537px" height="599px"></body> <br>');
+					document.write('<a style="font-size: 48px; color: yellow;" href="">Return to Safety</a>')
+					document.close();
+				}
+				else {
+					LockBark.play();
+				}
+				ComboCounter = 0;
+				CorrectCounter = 0;
+			}
+		}
+		
+		function SecretOpener() {
+			if (SecretState == false) {
+				SecretChime.play();
+				SecretState = true;
+			}
+		}
+		
+		// 1,3,2
+		Button1.addEventListener("click", function(){
+			if (SecretState == true) {
+				ComboCounter += 1;
+				if (ComboCounter == 1) {
+					CorrectCounter += 1;
+					console.log("yep yep");
+				}
+				ComboCheck();
+			}
+			else {
+				document.location = "credits.html";
+			}
+		});
+		Button2.addEventListener("click", function(){
+			if (SecretState == true) {
+				ComboCounter += 1;
+				if (ComboCounter == 3) {
+					CorrectCounter += 1;
+					console.log("yep yep yep");
+				}
+				ComboCheck();
+			}
+		});
+		Button3.addEventListener("click", function(){
+			if (SecretState == true) {
+				ComboCounter += 1;
+				if (ComboCounter == 2) {
+					CorrectCounter += 1;
+					console.log("yep");
+				}
+				ComboCheck();
+			}
+		});
+	
+	</script>
+
+	<style>
+		.FooterLinks {
+			background-color: lightgrey;
+			text-decoration: underline;
+			border: none;
+		}
+		footer {
+			margin: auto;
+			background-color: lightgrey;
+			padding: 10px;
+			width: 1280px;
+			text-align: center;
+		}
+		a {
+			margin: 10px;
+		}
+		header {
+			background-color: lightgrey;
+			padding: 3px;
+			width: 1280px;
+			text-align: center;
+		}
+		body {
+			width: 1280px;
+		}
+		#SupposedChoice {
+			width: 1280px;
+			text-align: center;
+		}
+		img {
+			padding-top: 15px;
+			padding-right: 20px;
+		}
+		button {
+			padding: 5px;
+			margin: 10px;
+		}
+	</style>
+</html>

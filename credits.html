@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html>
+
+	<title id="PageTitle">Bland Credits Page</title>
+	
+	<audio id="JoyousMusic" loop>
+		<source src="audio/BGcredits01.ogg" type="audio/ogg">
+	</audio>
+	<audio id="DepressingMusic" loop>
+		<source src="audio/BGcredits02.ogg" type="audio/ogg">
+	</audio>
+	
+	<body id="PageBG">
+		<div id="BigDiver">
+			<h1 style="text-align: center; font-size: 72px;">Welcome to the credits page!</h1>
+			<h2 style="text-align: center; font-size: 36px;">Come see the sights! Or at least see the credits</h2>
+			<a href="tos.html"><h3 style="text-align: center; font-size: 18px;">...or just get out of here</h3></a>
+			<hr>
+			<div id="MidDiver">
+				<div id="SurveyWindow">
+					<h3>Please Answer Our Survey!</h3>
+					<p>When you showed this site to someone, which option did they pick?</p>
+					<div style="text-align: left; margin-left: 60px; margin-top: 30px;">
+						<input type="radio" id="Radio1" name="Survey" value="Yes" onclick="HappyPage()"> 
+						<label for="Yes">Yes</label><br>
+						<input type="radio" id="Radio2" name="Survey" value="YesYes" onclick="HappyPage()"> 
+						<label for="YesYes">Deluxe Yes</label><br>
+						<input type="radio" id="Radio3" name="Survey" value="No" onclick="SadPage()"> 
+						<label for="No">No</label><br>
+						<input type="radio" id="Radio4" name="Survey" value="NoNo" onclick="SadPage()">
+						<label for="NoNo">Hard Mode No</label><br>
+						<input type="radio" id="Radio5" name="Survey" value="NoNoNo" onclick="BlandPage()">
+						<label for="NoNoNo">I had no one to show :(</label>
+					</div>
+				</div>
+				<div>
+					<h2>Audio Credits (in no particular order):</h2>
+					<ul>
+						<h3 style="margin: 10px;">SFX Credits:</h3>
+						<li>Team Fortress 2 - Valve Software</li>
+						<li>Legend of Zelda: Ocarina of Time - Nintendo of America</li>
+						<h3 style="margin: 10px;">Music Credits:</h3>
+						<li>Cupid (instrumental) - FIFTY FIFTY</li>
+						<li>Hard Times - Paramore</li>
+						<li>Postal 3 Theme - Running With Scissors</li>
+						<li>Loneliness 1A - Serial Experiments Lain</li>
+						<li>Solo - RiveR</li>
+						<li>All of the Lights - Kanye West</li>
+						<li>Turning it into This - New Medicine</li>
+						<li>Insomnia - 3kliksphilip</li>
+						<li>Lightnin - Krump Kings</li>
+					</ul>
+				</div>
+			</div>
+			<hr>
+			<div>
+				<h1 style="text-align: center; font-size: 48px;">Site Creators</h1>
+
+				<div class="DevBox">
+					<div>
+						<a href="https://github.com/JanColon">
+						<img src="https://avatars.githubusercontent.com/u/50427965" width=224 height=224 style="border: 2px dotted lightgrey;">
+						</a>
+					</div>
+					<div style="padding-left: 20px;">
+						<h1 onclick="BizzarePage()" class="DevBoxHeader">Jan-Marcos 'Jan_Colon' C.</h1> <hr>
+						<ul class="DevBoxDesc">
+							<li>Modified the orignal site *heavily*</li>
+							<li>Designed additional pages</li>
+							<li>Created various graphics/videos</li>
+							<li>Ironically had no one to make the site for</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="DevBox" style="margin-top: 30px;">
+					<div>
+						<a href="https://github.com/MonkiHot">
+						<img src="https://avatars.githubusercontent.com/u/84427228" width=224 height=224 style="border: 2px dotted lightgrey;">
+						</a>
+					</div>
+					<div style="padding-left: 20px;">
+						<h1 class="DevBoxHeader">Jason 'MonkiHot' L.</h1> <hr>
+						<ul class="DevBoxDesc">
+							<li>Created the orignal site</li>
+							<li>CCNA-certified networking wizard</li>
+							<li>STEM major (i.e., a soon-to-be hobo)</li>
+							<li>Actually had a girlfriend to make the site for</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+	
+	<style>
+		#BigDiver {
+			width: 1024px;
+			height: 1490px;
+			margin: auto;
+			margin-top:50px;
+			padding-top: 15px;
+			background-color: white;
+		}
+		#MidDiver {
+			display: flex;
+			flex-direction: row;
+			margin: auto;
+		}
+		#SurveyWindow {
+			width: 256px;
+			height: 244px;
+			padding: 10px;
+			margin: 30px;
+			border: 2px dotted lightgrey;
+			text-align: center;
+		}
+		.DevBoxHeader {
+			font-size: 42px;
+			text-align: center;
+			display: flex;
+			margin: auto;
+		}
+		.DevBoxDesc {
+			font-size: 28px; 
+			text-align: left; 
+			display: block;
+		}
+		.DevBox {
+			width: 860px;
+			height: 256px;
+			border: 2px dotted lightgrey;
+			padding: 20px;
+			margin: auto;
+			display: flex;
+			flex-direction: row;
+		}
+		body {
+			background-color: lightgrey;
+		}
+		ul {
+			list-style-type: square;
+		}
+	</style>
+
+	<script>
+		const SiteTitles = [
+			"Bland Credits Page",
+			"Joyous Credits Page",
+			"Depressing Credits Page"
+		];
+		const PageBG = document.getElementById("PageBG");
+		const BodyDiv = document.getElementById("BigDiver");
+		const PageTitle = document.getElementById("PageTitle");
+		const GoodMus = document.getElementById("JoyousMusic");
+		const BadMus = document.getElementById("DepressingMusic");
+		/*
+		const Radio1 = document.getElementById("Radio1");
+		const Radio2 = document.getElementById("Radio2");
+		const Radio3 = document.getElementById("Radio3");
+		const Radio4 = document.getElementById("Radio4");
+		const Radio5 = document.getElementById("Radio4");
+		*/
+		
+		Radio1.checked = false;
+		Radio2.checked = false;
+		Radio3.checked = false;
+		Radio4.checked = false;
+		
+		function SadPage() {
+			PageTitle.innerHTML = SiteTitles[2];
+			PageBG.style.backgroundColor = "MidnightBlue";
+			BodyDiv.style.backgroundColor = "DarkSlateBlue";
+			GoodMus.pause();
+			BadMus.play();
+		}
+		
+		function HappyPage() {
+			PageTitle.innerHTML = SiteTitles[1];
+			PageBG.style.backgroundColor = "maroon";
+			BodyDiv.style.backgroundColor = "gold";
+			BadMus.pause();
+			GoodMus.play();
+		}
+		
+		function BlandPage() {
+			PageTitle.innerHTML = SiteTitles[0];
+			PageBG.style.backgroundColor = "lightgrey";
+			BodyDiv.style.backgroundColor = "white";
+			GoodMus.pause();
+			BadMus.pause();
+		}
+		
+		function BizzarePage() {
+			document.open();
+			document.write('<title>Keef was here[?]</title>');
+			document.write('<body style="background-color: black; text-align: center;">');
+			document.write('<audio autoplay loop><source src="audio/BGcredits03.ogg" type="audio/ogg"></audio>');
+			document.write('<audio autoplay><source src="audio/SFXshutter.ogg" type="audio/ogg"></audio>');
+			document.write('<a href=""><img src="images/ComRom2.png" width=534 height=716 style="rotate: 15deg; padding: 60px;"></a>');
+			document.write('</body>');
+			document.close();
+		}
+		
+	</script>
+</html>
